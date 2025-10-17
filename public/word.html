@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Of The Day</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="word">
+        <h1 id="word"></h1>
+        <p id="type"></p>
+        <p id="def"></p>
+    </div>
+    <script>
+        fetch('/api/fetchWord')
+        .then(res=>res.json())
+        .then(data => {
+            document.getElementById('word').textContent = data.word;
+            document.getElementById('type').innerHTML = "<em>" + data.type + "</em>";
+            document.getElementById('def').textContent = data.def;
+        })
+    </script>
+</body>
+</html>
